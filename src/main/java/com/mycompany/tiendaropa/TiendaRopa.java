@@ -12,7 +12,8 @@ public class TiendaRopa {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        VentanaMenu ventanaMenu = new VentanaMenu();        
+        
+        VentanaIngreso ventanaIngreso = new VentanaIngreso();                
         
     }
 }

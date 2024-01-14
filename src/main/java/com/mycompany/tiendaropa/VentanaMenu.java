@@ -4,6 +4,8 @@
  */
 package com.mycompany.tiendaropa;
 
+import static com.mycompany.tiendaropa.VentanaIngreso.titulo;
+
 /**
  *
  * @author User
@@ -17,6 +19,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.setTitle(titulo);
     }
 
     /**
@@ -81,6 +84,7 @@ public class VentanaMenu extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Glamour Fusion");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -104,10 +108,10 @@ public class VentanaMenu extends javax.swing.JFrame {
                             .addComponent(btFacCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btProductos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(111, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(293, 293, 293)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(272, 272, 272))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,29 +142,37 @@ public class VentanaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btCategoriaActionPerformed
 
     private void btClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteActionPerformed
-        // TODO add your handling code here:
+        VentanaCliente vUsuario = new VentanaCliente();
+        this.cerrarVentana();
     }//GEN-LAST:event_btClienteActionPerformed
 
     private void btFacClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFacClienteActionPerformed
-        // TODO add your handling code here:
+        VentanaFactura vUsuario = new VentanaFactura();
+        this.cerrarVentana();
     }//GEN-LAST:event_btFacClienteActionPerformed
 
     private void btUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUsuarioActionPerformed
-        // TODO add your handling code here:
+        VentanaUsuario vUsuario = new VentanaUsuario();
+        this.cerrarVentana();        
     }//GEN-LAST:event_btUsuarioActionPerformed
 
     private void btProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProductosActionPerformed
-        // TODO add your handling code here:
+        VentanaProductos vProductos = new VentanaProductos();
+        this.cerrarVentana();
     }//GEN-LAST:event_btProductosActionPerformed
 
     private void btProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProveedorActionPerformed
-        // TODO add your handling code here:
+        VentanaProveedor vProveedor = new VentanaProveedor();
+        this.cerrarVentana();
     }//GEN-LAST:event_btProveedorActionPerformed
 
    
     public void cerrarVentana(){
         this.dispose();
     }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
