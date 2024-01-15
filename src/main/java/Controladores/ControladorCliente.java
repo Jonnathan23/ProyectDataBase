@@ -9,7 +9,7 @@ package Controladores;
  * @author User
  */
 public class ControladorCliente {
- 
+
     private String ci;
     private String nombre;
     private String apellido;
@@ -17,42 +17,63 @@ public class ControladorCliente {
     private String telefono;
     private String email;
 
-    public boolean controladorCi(){
-        if(this.ci.equals("Ingresar el numero de cedula")){
+    public boolean controladorCi() {
+        if (this.ci.equals("Ingresar el numero de cedula")) {
             return true;
         }
-        return (this.ci == null)?true:false;
+        return (this.ci == null) ? true : false;
     }
-    public boolean controladorNombre(){
-        if(this.nombre.equals("Ingresar el nombre")){
+
+    public boolean controladorNombre() {
+        if (this.nombre.equals("Ingresar el nombre")) {
             return true;
         }
-        return (this.nombre == null)?true:false;
-    } 
-    public boolean controladorApellido(){
-        if(this.apellido.equals("Ingresar el apellido")){
+        return (this.nombre == null) ? true : false;
+    }
+
+    public boolean controladorApellido() {
+        if (this.apellido.equals("Ingresar el apellido")) {
             return true;
         }
-        return (this.apellido == null)?true:false;
-    } 
-    public boolean controladorDireccion(){
-        if(this.direccion.equals("Ingrese la direccion completa")){
+        return (this.apellido == null) ? true : false;
+    }
+
+    public boolean controladorDireccion() {
+        if (this.direccion.equals("Ingrese la direccion completa")) {
             return true;
         }
-        return (this.direccion == null)?true:false;
-    } 
-    public boolean controladorTelefono(){
-        if(this.telefono.equals("Ingresar el numero de telefono")){
+        return (this.direccion == null) ? true : false;
+    }
+
+    public boolean controladorTelefono() {
+        if (this.telefono.equals("Ingresar el numero de telefono")) {
             return true;
         }
-        return (this.telefono == null)?true:false;
-    } 
-    public boolean controladorEmail(){
-        if(this.email.equals("Ingresar el correo electronico")){
+        return (this.telefono == null) ? true : false;
+    }
+
+    public boolean controladorEmail() {
+        if (this.email.equals("Ingresar el correo electronico")) {
             return true;
         }
-        return (this.email == null)?true:false;
-    } 
+        return (this.email == null) ? true : false;
+    }
+
+    public String getCi() {
+        return ci;
+    }
+
+    public void setCi(String ci) {
+        this.ci = ci;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     public String getApellido() {
         return apellido;
@@ -85,4 +106,5 @@ public class ControladorCliente {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }

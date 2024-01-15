@@ -4,10 +4,12 @@
  */
 package VentanasRegistro;
 
+import Controladores.ControladorCliente;
 import static VentanasRegistro.Colores.btCeleste;
 import static VentanasRegistro.Colores.btCelesteOscuro;
 import static VentanasRegistro.VentanaIngreso.titulo;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +19,7 @@ public class VentanaCliente extends javax.swing.JFrame {
 
     private Color colorTextoOriginal = new Color(60, 63, 65);
     private int xMouse, yMouse;
+    private ControladorCliente cCliente = new ControladorCliente();
 
     /**
      * Creates new form VentanaCategoria
@@ -25,10 +28,10 @@ public class VentanaCliente extends javax.swing.JFrame {
         initComponents();
 
         this.setVisible(true);
-        this.setLocationRelativeTo(null);        
+        this.setLocationRelativeTo(null);
         this.lbTituloC.setText(titulo);
         this.pintar();
-       
+
     }
 
     /**
@@ -203,6 +206,11 @@ public class VentanaCliente extends javax.swing.JFrame {
                 btAgregarClienteMouseExited(evt);
             }
         });
+        btAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAgregarClienteActionPerformed(evt);
+            }
+        });
         jpAgregarCliente.add(btAgregarCliente, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(jpAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 165, 35));
@@ -292,47 +300,47 @@ public class VentanaCliente extends javax.swing.JFrame {
 
     private void txtCedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCedulaMousePressed
         this.restablecerTextos();
-        if(this.txtCedula.getText().equals("Ingresar el numero de cedula")){
+        if (this.txtCedula.getText().equals("Ingresar el numero de cedula")) {
             this.txtCedula.setText("");
             this.txtCedula.setForeground(colorTextoOriginal);
         }
     }//GEN-LAST:event_txtCedulaMousePressed
 
     private void txtNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMousePressed
-         this.restablecerTextos();
-        if(this.txtNombre.getText().equals("Ingresar el nombre")){
+        this.restablecerTextos();
+        if (this.txtNombre.getText().equals("Ingresar el nombre")) {
             this.txtNombre.setText("");
             this.txtNombre.setForeground(colorTextoOriginal);
         }
     }//GEN-LAST:event_txtNombreMousePressed
 
     private void txtApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidoMousePressed
-         this.restablecerTextos();
-        if(this.txtApellido.getText().equals("Ingresar el apellido")){
+        this.restablecerTextos();
+        if (this.txtApellido.getText().equals("Ingresar el apellido")) {
             this.txtApellido.setText("");
             this.txtApellido.setForeground(colorTextoOriginal);
         }
     }//GEN-LAST:event_txtApellidoMousePressed
 
     private void txtDireccionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMousePressed
-         this.restablecerTextos();
-        if(this.txtDireccion.getText().equals("Ingrese la direccion completa")){
+        this.restablecerTextos();
+        if (this.txtDireccion.getText().equals("Ingrese la direccion completa")) {
             this.txtDireccion.setText("");
             this.txtDireccion.setForeground(colorTextoOriginal);
         }
     }//GEN-LAST:event_txtDireccionMousePressed
 
     private void txtTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMousePressed
-         this.restablecerTextos();
-        if(this.txtTelefono.getText().equals("Ingresar el numero de telefono")){
+        this.restablecerTextos();
+        if (this.txtTelefono.getText().equals("Ingresar el numero de telefono")) {
             this.txtTelefono.setText("");
             this.txtTelefono.setForeground(colorTextoOriginal);
         }
     }//GEN-LAST:event_txtTelefonoMousePressed
 
     private void txtEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMousePressed
-         this.restablecerTextos();
-        if(this.txtEmail.getText().equals("Ingresar el correo electronico")){
+        this.restablecerTextos();
+        if (this.txtEmail.getText().equals("Ingresar el correo electronico")) {
             this.txtEmail.setText("");
             this.txtEmail.setForeground(colorTextoOriginal);
         }
@@ -386,6 +394,64 @@ public class VentanaCliente extends javax.swing.JFrame {
         this.cerrarVentana();
     }//GEN-LAST:event_btRegresarCActionPerformed
 
+    private void btAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarClienteActionPerformed
+        this.cCliente.setCi(this.txtCedula.getText());
+        this.cCliente.setNombre(this.txtNombre.getText());
+        this.cCliente.setApellido(this.txtApellido.getText());
+        this.cCliente.setDireccion(this.txtDireccion.getText());
+        this.cCliente.setTelefono(this.txtTelefono.getText());
+        this.cCliente.setEmail(this.txtEmail.getText());
+
+        if (cCliente.controladorCi()) {
+            JOptionPane.showMessageDialog(null, "No ingreso la cedula!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtCedula.setText("");
+            this.restablecerTextos();
+            return;
+        }
+
+        if (cCliente.controladorNombre()) {
+            JOptionPane.showMessageDialog(null, "No ingreso el nombre del cliente!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtNombre.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+        if (cCliente.controladorApellido()) {
+            JOptionPane.showMessageDialog(null, "No ingreso el apellido del cliente!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtApellido.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+        if (cCliente.controladorDireccion()) {
+            JOptionPane.showMessageDialog(null, "No ingreso la direccion del cliente!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtDireccion.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+        if (cCliente.controladorTelefono()) {
+            JOptionPane.showMessageDialog(null, "No ingreso el telefono del cliente!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtTelefono.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+        if (cCliente.controladorEmail()) {
+            JOptionPane.showMessageDialog(null, "No ingreso el correo electronico del cliente!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtEmail.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+    }//GEN-LAST:event_btAgregarClienteActionPerformed
+
     private void restablecerTextos() {
         if (this.txtCedula.getText().isEmpty()) {
             this.txtCedula.setText("Ingresar el numero de cedula");
@@ -414,12 +480,12 @@ public class VentanaCliente extends javax.swing.JFrame {
 
     }
 
-    private void pintar(){
+    private void pintar() {
         this.lbTituloC.setForeground(Colores.btTextoSalir);
         this.btSalirC.setForeground(Colores.btTextoSalir);
         this.btRegresarC.setForeground(Colores.btTextoSalir);
     }
-    
+
     public void cerrarVentana() {
         this.dispose();
     }

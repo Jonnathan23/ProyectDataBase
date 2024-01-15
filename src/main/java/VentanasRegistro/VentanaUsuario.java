@@ -4,10 +4,12 @@
  */
 package VentanasRegistro;
 
+import Controladores.ControladorUsuario;
 import static VentanasRegistro.VentanaIngreso.titulo;
 import static VentanasRegistro.Colores.btCeleste;
 import static VentanasRegistro.Colores.btCelesteOscuro;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +18,7 @@ import java.awt.Color;
 public class VentanaUsuario extends javax.swing.JFrame{
 
     private Color colorTextoOriginal = new Color(167,216,232);
-    
+    private ControladorUsuario cUsuario = new ControladorUsuario();
     /**
      * Creates new form VentanaCategoria
      */
@@ -145,6 +147,11 @@ public class VentanaUsuario extends javax.swing.JFrame{
                 btAgregarUusarioMouseExited(evt);
             }
         });
+        btAgregarUusario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAgregarUusarioActionPerformed(evt);
+            }
+        });
         jpAgregarUsuario.add(btAgregarUusario, java.awt.BorderLayout.CENTER);
 
         jpContenedor.add(jpAgregarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 165, 45));
@@ -223,7 +230,7 @@ public class VentanaUsuario extends javax.swing.JFrame{
 
     // ****************** PRESSED ****************
     private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
-        this.restablesTextos();
+        this.restablecerTextos();
         if(this.txtUsuario.getText().equals("Ingrese el numero de CI")){
             this.txtUsuario.setText("");
             this.txtUsuario.setForeground(Colores.btCeleste);
@@ -235,7 +242,7 @@ public class VentanaUsuario extends javax.swing.JFrame{
     }//GEN-LAST:event_txtNombreMouseEntered
 
     private void txtNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMousePressed
-        this.restablesTextos();
+        this.restablecerTextos();
         if(this.txtNombre.getText().equals("Ingrese el nombre del usuario")){
             this.txtNombre.setText("");
             this.txtNombre.setForeground(Colores.btCeleste);
@@ -243,7 +250,7 @@ public class VentanaUsuario extends javax.swing.JFrame{
     }//GEN-LAST:event_txtNombreMousePressed
 
     private void txtContrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContrasenaMousePressed
-        this.restablesTextos();
+        this.restablecerTextos();
         if(String.valueOf(this.txtContrasena.getPassword()).equals("************")){
             this.txtContrasena.setText("");
             this.txtContrasena.setForeground(Colores.btCeleste);
@@ -251,7 +258,7 @@ public class VentanaUsuario extends javax.swing.JFrame{
     }//GEN-LAST:event_txtContrasenaMousePressed
 
     private void txtConfirmarContrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConfirmarContrasenaMousePressed
-        this.restablesTextos();
+        this.restablecerTextos();
         if(String.valueOf(this.txtConfirmarContrasena.getPassword()).equals("************")){
             this.txtConfirmarContrasena.setText("");
             this.txtConfirmarContrasena.setForeground(Colores.btCeleste);
@@ -266,9 +273,49 @@ public class VentanaUsuario extends javax.swing.JFrame{
         this.jpAgregarUsuario.setBackground(Colores.btCeleste);
     }//GEN-LAST:event_btAgregarUusarioMouseExited
 
+    private void btAgregarUusarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarUusarioActionPerformed
+        this.cUsuario.setUsuario(this.txtUsuario.getText());  
+        this.cUsuario.setNombre(this.txtNombre.getText());
+        this.cUsuario.setContrasena(String.valueOf(this.txtContrasena.getPassword()));
+        this.cUsuario.setConfirmaContrasena(String.valueOf(this.txtConfirmarContrasena.getPassword()));
+        
+        if (cUsuario.controladorUsuario()) {
+            JOptionPane.showMessageDialog(null, "No ingreso el usuario!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtUsuario.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+        if (cUsuario.controladorNombre()) {
+            JOptionPane.showMessageDialog(null, "No ingreso el nombre del usuario!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtNombre.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+        if (cUsuario.controladorConfirmarContrasena()) {
+            JOptionPane.showMessageDialog(null, "No ingreso la confirmacion de la contraseña del usuario!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtConfirmarContrasena.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+        if (cUsuario.controladorContrasena()) {
+            JOptionPane.showMessageDialog(null, "No ingreso la contraseña del usuario!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtContrasena.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+    }//GEN-LAST:event_btAgregarUusarioActionPerformed
+
     
     // ***************** MÉTODOS *****************
-    private void restablesTextos(){
+    private void restablecerTextos(){
         if(this.txtUsuario.getText().isEmpty()){
             this.txtUsuario.setText("Ingrese el numero de CI");
             this.txtUsuario.setForeground(colorTextoOriginal);
