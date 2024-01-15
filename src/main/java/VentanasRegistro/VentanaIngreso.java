@@ -5,6 +5,9 @@
 package VentanasRegistro;
 
 import Controladores.ControladorIngreso;
+import static VentanasRegistro.Colores.btCeleste;
+import static VentanasRegistro.Colores.btCelesteOscuro;
+import static VentanasRegistro.Colores.btRojo;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -15,15 +18,12 @@ import javax.swing.JOptionPane;
 public class VentanaIngreso extends javax.swing.JFrame {
 
     static public String titulo = "Glamour Fusion";
-    static public Color btCelesteOscuro = new Color(40, 110, 133);
-    static public Color btCeleste = new Color(62, 169, 204);
-
-    static public Color btNaranja = new Color(214, 122, 30);
-    static public Color btNaranjaOscuro = new Color(193, 111, 29);    
-    
-    private Color colorTexto = new Color(204,204,204);
+    private Color colorTexto = new Color(204, 204, 204);
     
     private ControladorIngreso cIngreso = new ControladorIngreso();
+    
+    private int xMouse;
+    private int yMouse;
 
     /**
      * Creates new form VentanaIngreso
@@ -31,7 +31,7 @@ public class VentanaIngreso extends javax.swing.JFrame {
     public VentanaIngreso() {
         initComponents();
 
-        this.setTitle(titulo);
+        this.lbTitulo.setText(titulo);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
@@ -57,8 +57,14 @@ public class VentanaIngreso extends javax.swing.JFrame {
         btRegistrarse = new javax.swing.JLabel();
         jpIngresar = new javax.swing.JPanel();
         btIngresar = new javax.swing.JButton();
+        jpMarco = new javax.swing.JPanel();
+        jpSalir = new javax.swing.JPanel();
+        btSalir = new javax.swing.JButton();
+        lbTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jpFondo.setBackground(new java.awt.Color(62, 169, 204));
         jpFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -140,7 +146,9 @@ public class VentanaIngreso extends javax.swing.JFrame {
         Blanco.setLayout(BlancoLayout);
         BlancoLayout.setHorizontalGroup(
             BlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BlancoLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(BlancoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(BlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -188,7 +196,50 @@ public class VentanaIngreso extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        jpFondo.add(Blanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 360, 340));
+        jpFondo.add(Blanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 360, 340));
+
+        jpMarco.setBackground(new java.awt.Color(255, 255, 255));
+        jpMarco.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpMarcoMouseDragged(evt);
+            }
+        });
+        jpMarco.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpMarcoMousePressed(evt);
+            }
+        });
+        jpMarco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jpSalir.setBackground(new java.awt.Color(255, 255, 255));
+        jpSalir.setLayout(new java.awt.BorderLayout());
+
+        btSalir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btSalir.setText("X");
+        btSalir.setBorder(null);
+        btSalir.setContentAreaFilled(false);
+        btSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btSalirMouseExited(evt);
+            }
+        });
+        jpSalir.add(btSalir, java.awt.BorderLayout.CENTER);
+
+        jpMarco.add(jpSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 50, 30));
+
+        lbTitulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        lbTitulo.setForeground(new java.awt.Color(153, 153, 153));
+        lbTitulo.setText("jLabel4");
+        jpMarco.add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 280, 30));
+
+        jpFondo.add(jpMarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,7 +249,9 @@ public class VentanaIngreso extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,7 +290,7 @@ public class VentanaIngreso extends javax.swing.JFrame {
         this.restablecerTextos();
         if(this.txtUsuario.getText().equals("Ingrese la cedula del usuario")){
             this.txtUsuario.setText("");
-            this.txtUsuario.setForeground(btCeleste);
+            this.txtUsuario.setForeground(Colores.btCeleste);
         }
     }//GEN-LAST:event_txtUsuarioMousePressed
 
@@ -251,6 +304,31 @@ public class VentanaIngreso extends javax.swing.JFrame {
     private void btRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistrarseMouseClicked
         VentanaUsuario vUsuario = new VentanaUsuario();
     }//GEN-LAST:event_btRegistrarseMouseClicked
+
+    private void btSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirMouseEntered
+        this.jpSalir.setBackground(btRojo);
+        this.btSalir.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btSalirMouseEntered
+
+    private void btSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirMouseExited
+        this.jpSalir.setBackground(Color.WHITE);
+        this.btSalir.setForeground(Colores.btTextoSalir);
+    }//GEN-LAST:event_btSalirMouseExited
+
+    private void jpMarcoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcoMousePressed
+        this.xMouse = evt.getX();
+        this.yMouse = evt.getY();
+    }//GEN-LAST:event_jpMarcoMousePressed
+
+    private void jpMarcoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcoMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jpMarcoMouseDragged
+
+    private void btSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_btSalirMouseClicked
 
     private void restablecerTextos(){
         if(this.txtUsuario.getText().isEmpty()){
@@ -309,6 +387,7 @@ public class VentanaIngreso extends javax.swing.JFrame {
     private javax.swing.JPanel Blanco;
     private javax.swing.JButton btIngresar;
     private javax.swing.JLabel btRegistrarse;
+    private javax.swing.JButton btSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -316,6 +395,9 @@ public class VentanaIngreso extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel jpFondo;
     private javax.swing.JPanel jpIngresar;
+    private javax.swing.JPanel jpMarco;
+    private javax.swing.JPanel jpSalir;
+    private javax.swing.JLabel lbTitulo;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

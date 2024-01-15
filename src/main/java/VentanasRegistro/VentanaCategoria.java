@@ -6,8 +6,8 @@ package VentanasRegistro;
 
 import Controladores.ControladorCategoria;
 import static VentanasRegistro.VentanaIngreso.titulo;
-import static VentanasRegistro.VentanaIngreso.btCeleste;
-import static VentanasRegistro.VentanaIngreso.btCelesteOscuro;
+import static VentanasRegistro.Colores.btCeleste;
+import static VentanasRegistro.Colores.btCelesteOscuro;
 import javax.swing.JOptionPane;
 
 /**
@@ -145,11 +145,11 @@ public class VentanaCategoria extends javax.swing.JFrame{
     }//GEN-LAST:event_txtNombreCatMousePressed
 
     private void btAgregarUusarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarUusarioMouseEntered
-        this.jpAgregarUsuario.setBackground(btCelesteOscuro);
+        this.jpAgregarUsuario.setBackground(Colores.btCelesteOscuro);
     }//GEN-LAST:event_btAgregarUusarioMouseEntered
 
     private void btAgregarUusarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarUusarioMouseExited
-        this.jpAgregarUsuario.setBackground(btCeleste);
+        this.jpAgregarUsuario.setBackground(Colores.btCeleste);
     }//GEN-LAST:event_btAgregarUusarioMouseExited
 
     private void btAgregarUusarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarUusarioActionPerformed

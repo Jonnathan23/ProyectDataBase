@@ -5,8 +5,8 @@
 package VentanasRegistro;
 
 import static VentanasRegistro.VentanaIngreso.titulo;
-import static VentanasRegistro.VentanaIngreso.btCeleste;
-import static VentanasRegistro.VentanaIngreso.btCelesteOscuro;
+import static VentanasRegistro.Colores.btCeleste;
+import static VentanasRegistro.Colores.btCelesteOscuro;
 import java.awt.Color;
 
 /**
@@ -226,7 +226,7 @@ public class VentanaUsuario extends javax.swing.JFrame{
         this.restablesTextos();
         if(this.txtUsuario.getText().equals("Ingrese el numero de CI")){
             this.txtUsuario.setText("");
-            this.txtUsuario.setForeground(btCeleste);
+            this.txtUsuario.setForeground(Colores.btCeleste);
         }
     }//GEN-LAST:event_txtUsuarioMousePressed
 
@@ -238,7 +238,7 @@ public class VentanaUsuario extends javax.swing.JFrame{
         this.restablesTextos();
         if(this.txtNombre.getText().equals("Ingrese el nombre del usuario")){
             this.txtNombre.setText("");
-            this.txtNombre.setForeground(btCeleste);
+            this.txtNombre.setForeground(Colores.btCeleste);
         }
     }//GEN-LAST:event_txtNombreMousePressed
 
@@ -246,7 +246,7 @@ public class VentanaUsuario extends javax.swing.JFrame{
         this.restablesTextos();
         if(String.valueOf(this.txtContrasena.getPassword()).equals("************")){
             this.txtContrasena.setText("");
-            this.txtContrasena.setForeground(btCeleste);
+            this.txtContrasena.setForeground(Colores.btCeleste);
         }
     }//GEN-LAST:event_txtContrasenaMousePressed
 
@@ -254,16 +254,16 @@ public class VentanaUsuario extends javax.swing.JFrame{
         this.restablesTextos();
         if(String.valueOf(this.txtConfirmarContrasena.getPassword()).equals("************")){
             this.txtConfirmarContrasena.setText("");
-            this.txtConfirmarContrasena.setForeground(btCeleste);
+            this.txtConfirmarContrasena.setForeground(Colores.btCeleste);
         }
     }//GEN-LAST:event_txtConfirmarContrasenaMousePressed
 
     private void btAgregarUusarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarUusarioMouseEntered
-        this.jpAgregarUsuario.setBackground(btCelesteOscuro);
+        this.jpAgregarUsuario.setBackground(Colores.btCelesteOscuro);
     }//GEN-LAST:event_btAgregarUusarioMouseEntered
 
     private void btAgregarUusarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarUusarioMouseExited
-        this.jpAgregarUsuario.setBackground(btCeleste);
+        this.jpAgregarUsuario.setBackground(Colores.btCeleste);
     }//GEN-LAST:event_btAgregarUusarioMouseExited
 
     

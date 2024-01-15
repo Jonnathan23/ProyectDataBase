@@ -4,8 +4,8 @@
  */
 package VentanasRegistro;
 
-import static VentanasRegistro.VentanaIngreso.btCeleste;
-import static VentanasRegistro.VentanaIngreso.btCelesteOscuro;
+import static VentanasRegistro.Colores.btCeleste;
+import static VentanasRegistro.Colores.btCelesteOscuro;
 import static VentanasRegistro.VentanaIngreso.titulo;
 import java.awt.Color;
 
@@ -288,11 +288,11 @@ public class VentanaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailMousePressed
 
     private void btAgregarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarClienteMouseEntered
-        this.jpAgregarCliente.setBackground(btCelesteOscuro);
+        this.jpAgregarCliente.setBackground(Colores.btCelesteOscuro);
     }//GEN-LAST:event_btAgregarClienteMouseEntered
 
     private void btAgregarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarClienteMouseExited
-        this.jpAgregarCliente.setBackground(btCeleste);
+        this.jpAgregarCliente.setBackground(Colores.btCeleste);
     }//GEN-LAST:event_btAgregarClienteMouseExited
 
     private void restablecerTextos() {
