@@ -2,22 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.tiendaropa;
+package VentanasRegistro;
 
-import static com.mycompany.tiendaropa.VentanaIngreso.titulo;
+import static VentanasRegistro.VentanaIngreso.btCeleste;
+import static VentanasRegistro.VentanaIngreso.btCelesteOscuro;
+import static VentanasRegistro.VentanaIngreso.titulo;
+import java.awt.Color;
 
 /**
  *
  * @author User
  */
-public class VentanaCliente extends javax.swing.JFrame{
+public class VentanaCliente extends javax.swing.JFrame {
+
+    private Color colorTextoOriginal = new Color(60, 63, 65);
 
     /**
      * Creates new form VentanaCategoria
      */
     public VentanaCliente() {
         initComponents();
-        
+
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setTitle(titulo);
@@ -63,72 +68,115 @@ public class VentanaCliente extends javax.swing.JFrame{
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(136, 136, 136));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Agregar un cliente");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 440, 20));
 
         txtNombre.setBackground(new java.awt.Color(204, 204, 204));
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Ingresar nombre");
+        txtNombre.setText("Ingresar el nombre");
         txtNombre.setBorder(null);
-        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 260, 20));
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtNombreMousePressed(evt);
+            }
+        });
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 260, 25));
 
         txtCedula.setBackground(new java.awt.Color(204, 204, 204));
         txtCedula.setForeground(new java.awt.Color(255, 255, 255));
-        txtCedula.setText("Ingresar numero de cedula");
+        txtCedula.setText("Ingresar el numero de cedula");
         txtCedula.setBorder(null);
-        jPanel2.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 260, 20));
+        txtCedula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtCedulaMousePressed(evt);
+            }
+        });
+        jPanel2.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 270, 25));
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(136, 136, 136));
         jLabel1.setText("Nombre");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(136, 136, 136));
         jLabel3.setText("CI");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 30, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 30, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(136, 136, 136));
         jLabel4.setText("Apellido");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 120, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 120, -1));
 
         txtApellido.setBackground(new java.awt.Color(204, 204, 204));
         txtApellido.setForeground(new java.awt.Color(255, 255, 255));
-        txtApellido.setText("Ingresar numero de cedula");
+        txtApellido.setText("Ingresar el apellido");
         txtApellido.setBorder(null);
-        jPanel2.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 260, 20));
+        txtApellido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtApellidoMousePressed(evt);
+            }
+        });
+        jPanel2.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 260, 25));
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(136, 136, 136));
         jLabel5.setText("Dirección");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 140, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 140, -1));
 
         txtDireccion.setBackground(new java.awt.Color(204, 204, 204));
         txtDireccion.setColumns(20);
         txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
         txtDireccion.setRows(5);
+        txtDireccion.setText("Ingrese la direccion completa");
         txtDireccion.setBorder(null);
+        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtDireccionMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtDireccion);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 260, 40));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 260, 40));
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(136, 136, 136));
         jLabel6.setText("Telefono");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 80, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 80, -1));
 
         txtTelefono.setBackground(new java.awt.Color(204, 204, 204));
         txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        txtTelefono.setText("Ingresar numero de cedula");
+        txtTelefono.setText("Ingresar el numero de telefono");
         txtTelefono.setBorder(null);
-        jPanel2.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 260, 20));
+        txtTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtTelefonoMousePressed(evt);
+            }
+        });
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 260, 25));
 
         jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(136, 136, 136));
         jLabel7.setText("Email");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
 
         txtEmail.setBackground(new java.awt.Color(204, 204, 204));
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        txtEmail.setText("Ingresar nombre");
+        txtEmail.setText("Ingresar el correo electronico");
         txtEmail.setBorder(null);
-        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 260, 20));
+        txtEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtEmailMousePressed(evt);
+            }
+        });
+        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 260, 25));
 
         jpAgregarCliente.setBackground(new java.awt.Color(62, 169, 204));
         jpAgregarCliente.setLayout(new java.awt.BorderLayout());
@@ -139,11 +187,19 @@ public class VentanaCliente extends javax.swing.JFrame{
         btAgregarCliente.setBorder(null);
         btAgregarCliente.setContentAreaFilled(false);
         btAgregarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btAgregarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btAgregarClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btAgregarClienteMouseExited(evt);
+            }
+        });
         jpAgregarCliente.add(btAgregarCliente, java.awt.BorderLayout.CENTER);
 
-        jPanel2.add(jpAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 165, 35));
+        jPanel2.add(jpAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 165, 35));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 440, 490));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 440, 520));
 
         jMenu4.setText("Registrar");
 
@@ -168,7 +224,7 @@ public class VentanaCliente extends javax.swing.JFrame{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
 
         pack();
@@ -179,9 +235,98 @@ public class VentanaCliente extends javax.swing.JFrame{
         this.cerrarVentana();
     }//GEN-LAST:event_miVolverActionPerformed
 
-    public void cerrarVentana(){
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void txtCedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCedulaMousePressed
+        this.restablecerTextos();
+        if(this.txtCedula.getText().equals("Ingresar el numero de cedula")){
+            this.txtCedula.setText("");
+            this.txtCedula.setForeground(colorTextoOriginal);
+        }
+    }//GEN-LAST:event_txtCedulaMousePressed
+
+    private void txtNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMousePressed
+         this.restablecerTextos();
+        if(this.txtNombre.getText().equals("Ingresar el nombre")){
+            this.txtNombre.setText("");
+            this.txtNombre.setForeground(colorTextoOriginal);
+        }
+    }//GEN-LAST:event_txtNombreMousePressed
+
+    private void txtApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidoMousePressed
+         this.restablecerTextos();
+        if(this.txtApellido.getText().equals("Ingresar el apellido")){
+            this.txtApellido.setText("");
+            this.txtApellido.setForeground(colorTextoOriginal);
+        }
+    }//GEN-LAST:event_txtApellidoMousePressed
+
+    private void txtDireccionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMousePressed
+         this.restablecerTextos();
+        if(this.txtDireccion.getText().equals("Ingrese la direccion completa")){
+            this.txtDireccion.setText("");
+            this.txtDireccion.setForeground(colorTextoOriginal);
+        }
+    }//GEN-LAST:event_txtDireccionMousePressed
+
+    private void txtTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMousePressed
+         this.restablecerTextos();
+        if(this.txtTelefono.getText().equals("Ingresar el numero de telefono")){
+            this.txtTelefono.setText("");
+            this.txtTelefono.setForeground(colorTextoOriginal);
+        }
+    }//GEN-LAST:event_txtTelefonoMousePressed
+
+    private void txtEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMousePressed
+         this.restablecerTextos();
+        if(this.txtEmail.getText().equals("Ingresar el correo electronico")){
+            this.txtEmail.setText("");
+            this.txtEmail.setForeground(colorTextoOriginal);
+        }
+    }//GEN-LAST:event_txtEmailMousePressed
+
+    private void btAgregarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarClienteMouseEntered
+        this.jpAgregarCliente.setBackground(btCelesteOscuro);
+    }//GEN-LAST:event_btAgregarClienteMouseEntered
+
+    private void btAgregarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarClienteMouseExited
+        this.jpAgregarCliente.setBackground(btCeleste);
+    }//GEN-LAST:event_btAgregarClienteMouseExited
+
+    private void restablecerTextos() {
+        if (this.txtCedula.getText().isEmpty()) {
+            this.txtCedula.setText("Ingresar el numero de cedula");
+            this.txtCedula.setForeground(Color.WHITE);
+        }
+        if (this.txtNombre.getText().isEmpty()) {
+            this.txtNombre.setText("Ingresar el nombre");
+            this.txtNombre.setForeground(Color.WHITE);
+        }
+        if (this.txtApellido.getText().isEmpty()) {
+            this.txtApellido.setText("Ingresar el apellido");
+            this.txtApellido.setForeground(Color.WHITE);
+        }
+        if (this.txtDireccion.getText().isEmpty()) {
+            this.txtDireccion.setText("Ingrese la direccion completa");
+            this.txtDireccion.setForeground(Color.WHITE);
+        }
+        if (this.txtTelefono.getText().isEmpty()) {
+            this.txtTelefono.setText("Ingresar el numero de telefono");
+            this.txtTelefono.setForeground(Color.WHITE);
+        }
+        if (this.txtEmail.getText().isEmpty()) {
+            this.txtEmail.setText("Ingresar el correo electronico");
+            this.txtEmail.setForeground(Color.WHITE);
+        }
+
+    }
+
+    public void cerrarVentana() {
         this.dispose();
     }
+
     /**
      * @param args the command line arguments
      */

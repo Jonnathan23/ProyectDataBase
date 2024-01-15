@@ -12,8 +12,8 @@ import java.awt.Color;
  * @author User
  */
 public class VentanaMenu extends javax.swing.JFrame {
-    Color btColor = new Color(40,110,133);
-    Color btColorOscuro = new Color(62,169,204);
+    Color btColorOscuro = new Color(40,110,133);
+    Color btColor = new Color(62,169,204);
     /**
      * Creates new form NewJFrame
      */
@@ -150,6 +150,9 @@ public class VentanaMenu extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btProductosMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btProductosMouseExited(evt);
+            }
         });
         btProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +173,14 @@ public class VentanaMenu extends javax.swing.JFrame {
         btProveedor.setContentAreaFilled(false);
         btProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btProveedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btProveedorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btProveedorMouseExited(evt);
+            }
+        });
         btProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btProveedorActionPerformed(evt);
@@ -188,6 +199,14 @@ public class VentanaMenu extends javax.swing.JFrame {
         btCategoria.setBorder(null);
         btCategoria.setContentAreaFilled(false);
         btCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btCategoriaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btCategoriaMouseExited(evt);
+            }
+        });
         btCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCategoriaActionPerformed(evt);
@@ -242,32 +261,52 @@ public class VentanaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btCategoriaActionPerformed
 
     private void btClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btClienteMouseEntered
-        this.jpRCliente.setBackground(btColor);
+        this.jpRCliente.setBackground(btColorOscuro);
     }//GEN-LAST:event_btClienteMouseEntered
 
     private void btClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btClienteMouseExited
-        this.jpRCliente.setBackground(btColorOscuro);
+        this.jpRCliente.setBackground(btColor);
     }//GEN-LAST:event_btClienteMouseExited
 
     private void btUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btUsuarioMouseEntered
-        this.jpUsuario.setBackground(btColor);
+        this.jpUsuario.setBackground(btColorOscuro);
     }//GEN-LAST:event_btUsuarioMouseEntered
 
     private void btUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btUsuarioMouseExited
-        this.jpUsuario.setBackground(btColorOscuro);
+        this.jpUsuario.setBackground(btColor);
     }//GEN-LAST:event_btUsuarioMouseExited
 
     private void btFacClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btFacClienteMouseEntered
-        this.jpFactura.setBackground(btColor);
+        this.jpFactura.setBackground(btColorOscuro);
     }//GEN-LAST:event_btFacClienteMouseEntered
 
     private void btFacClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btFacClienteMouseExited
-        this.jpFactura.setBackground(btColorOscuro);
+        this.jpFactura.setBackground(btColor);
     }//GEN-LAST:event_btFacClienteMouseExited
 
     private void btProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btProductosMouseEntered
-        this.jpProductos.setBackground(btColor);
+        this.jpProductos.setBackground(btColorOscuro);
     }//GEN-LAST:event_btProductosMouseEntered
+
+    private void btProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btProductosMouseExited
+        this.jpProductos.setBackground(btColor);
+    }//GEN-LAST:event_btProductosMouseExited
+
+    private void btProveedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btProveedorMouseEntered
+        this.jpProveedor.setBackground(btColorOscuro);
+    }//GEN-LAST:event_btProveedorMouseEntered
+
+    private void btProveedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btProveedorMouseExited
+        this.jpProveedor.setBackground(btColor);
+    }//GEN-LAST:event_btProveedorMouseExited
+
+    private void btCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCategoriaMouseEntered
+        this.jpCategoria.setBackground(btColorOscuro);
+    }//GEN-LAST:event_btCategoriaMouseEntered
+
+    private void btCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCategoriaMouseExited
+        this.jpCategoria.setBackground(btColor);
+    }//GEN-LAST:event_btCategoriaMouseExited
 
    
     public void cerrarVentana(){

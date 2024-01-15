@@ -2,23 +2,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.tiendaropa;
+package VentanasRegistro;
 
-
-import com.mycompany.tiendaropa.*;
+import Controladores.ControladorIngreso;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author User
  */
 public class VentanaIngreso extends javax.swing.JFrame {
+
     static public String titulo = "Glamour Fusion";
+    static public Color btCelesteOscuro = new Color(40, 110, 133);
+    static public Color btCeleste = new Color(62, 169, 204);
+
+    static public Color btNaranja = new Color(214, 122, 30);
+    static public Color btNaranjaOscuro = new Color(193, 111, 29);    
+    
+    private Color colorTexto = new Color(204,204,204);
+    
+    private ControladorIngreso cIngreso = new ControladorIngreso();
+
     /**
      * Creates new form VentanaIngreso
      */
     public VentanaIngreso() {
         initComponents();
-        
+
         this.setTitle(titulo);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -41,21 +53,21 @@ public class VentanaIngreso extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        txtContrsena = new javax.swing.JPasswordField();
+        txtContrasena = new javax.swing.JPasswordField();
         btRegistrarse = new javax.swing.JLabel();
         jpIngresar = new javax.swing.JPanel();
         btIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jpFondo.setBackground(new java.awt.Color(51, 153, 255));
+        jpFondo.setBackground(new java.awt.Color(62, 169, 204));
         jpFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Blanco.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(63, 91, 147));
+        jLabel1.setForeground(new java.awt.Color(62, 169, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INICIAR SESION");
 
@@ -67,6 +79,11 @@ public class VentanaIngreso extends javax.swing.JFrame {
         txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
         txtUsuario.setText("Ingrese la cedula del usuario");
         txtUsuario.setBorder(null);
+        txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtUsuarioMousePressed(evt);
+            }
+        });
 
         jSeparator1.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -74,17 +91,27 @@ public class VentanaIngreso extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         jLabel3.setText("Contraseña");
 
-        txtContrsena.setBackground(new java.awt.Color(255, 255, 255));
-        txtContrsena.setText("jPasswordField1");
-        txtContrsena.setBorder(null);
+        txtContrasena.setBackground(new java.awt.Color(255, 255, 255));
+        txtContrasena.setText("************");
+        txtContrasena.setBorder(null);
+        txtContrasena.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtContrasenaMousePressed(evt);
+            }
+        });
 
         btRegistrarse.setFont(new java.awt.Font("Arial Rounded MT Bold", 2, 10)); // NOI18N
-        btRegistrarse.setForeground(new java.awt.Color(63, 91, 147));
+        btRegistrarse.setForeground(new java.awt.Color(62, 169, 204));
         btRegistrarse.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btRegistrarse.setText("Registrarse");
         btRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btRegistrarseMouseClicked(evt);
+            }
+        });
 
-        jpIngresar.setBackground(new java.awt.Color(63, 91, 147));
+        jpIngresar.setBackground(new java.awt.Color(62, 169, 204));
         jpIngresar.setLayout(new java.awt.BorderLayout());
 
         btIngresar.setBackground(new java.awt.Color(63, 91, 147));
@@ -94,6 +121,14 @@ public class VentanaIngreso extends javax.swing.JFrame {
         btIngresar.setBorder(null);
         btIngresar.setContentAreaFilled(false);
         btIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btIngresarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btIngresarMouseExited(evt);
+            }
+        });
         btIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btIngresarActionPerformed(evt);
@@ -109,7 +144,7 @@ public class VentanaIngreso extends javax.swing.JFrame {
             .addGroup(BlancoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(BlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtContrsena, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(BlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel3)
@@ -143,7 +178,7 @@ public class VentanaIngreso extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtContrsena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
@@ -170,15 +205,68 @@ public class VentanaIngreso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIngresarActionPerformed
+        cIngreso.setUsuario(String.valueOf(this.txtUsuario.getText()));
+        cIngreso.setContrasena(String.valueOf(this.txtContrasena.getPassword()));
+        
+        if (cIngreso.controlUsuario()) {
+            JOptionPane.showMessageDialog(null,"No ha ingresado el usuario!","Error",JOptionPane.ERROR_MESSAGE);
+            this.txtUsuario.setFocusable(true);
+            return;
+        }
+        
+        if(cIngreso.controlContrasena()){
+            JOptionPane.showMessageDialog(null,"No ha ingresado la constraseña!","Error",JOptionPane.ERROR_MESSAGE);
+            this.txtContrasena.setFocusable(true);
+            return;
+        }
+
         VentanaMenu ventanaMenu = new VentanaMenu();
         this.cerrarVentana();
     }//GEN-LAST:event_btIngresarActionPerformed
 
-    
-    
-    public void cerrarVentana(){
+    private void btIngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btIngresarMouseEntered
+        //[40,110,133]
+        this.jpIngresar.setBackground(btCelesteOscuro);
+    }//GEN-LAST:event_btIngresarMouseEntered
+
+    private void btIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btIngresarMouseExited
+        this.jpIngresar.setBackground(btCeleste);
+    }//GEN-LAST:event_btIngresarMouseExited
+
+    private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
+        this.restablecerTextos();
+        if(this.txtUsuario.getText().equals("Ingrese la cedula del usuario")){
+            this.txtUsuario.setText("");
+            this.txtUsuario.setForeground(btCeleste);
+        }
+    }//GEN-LAST:event_txtUsuarioMousePressed
+
+    private void txtContrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContrasenaMousePressed
+        if(String.valueOf(this.txtContrasena.getPassword()).equals("************")){
+            this.txtContrasena.setText("");
+            this.txtContrasena.setForeground(btCeleste);
+        }
+    }//GEN-LAST:event_txtContrasenaMousePressed
+
+    private void btRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistrarseMouseClicked
+        VentanaUsuario vUsuario = new VentanaUsuario();
+    }//GEN-LAST:event_btRegistrarseMouseClicked
+
+    private void restablecerTextos(){
+        if(this.txtUsuario.getText().isEmpty()){
+            this.txtUsuario.setText("Ingrese la cedula del usuario");
+            this.txtUsuario.setForeground(colorTexto);
+        }
+        
+        if(String.valueOf(this.txtContrasena.getPassword()).isEmpty()){
+            this.txtContrasena.setText("************");
+            this.txtContrasena.setForeground(colorTexto);
+        }
+    }
+    public void cerrarVentana() {
         this.dispose();
     }
+
     /**
      * @param args the command line arguments
      */
@@ -228,7 +316,7 @@ public class VentanaIngreso extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel jpFondo;
     private javax.swing.JPanel jpIngresar;
-    private javax.swing.JPasswordField txtContrsena;
+    private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
