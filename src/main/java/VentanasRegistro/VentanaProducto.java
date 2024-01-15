@@ -265,6 +265,9 @@ public class VentanaProducto extends javax.swing.JFrame {
         btRegresarP.setContentAreaFilled(false);
         btRegresarP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btRegresarP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btRegresarPMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btRegresarPMouseEntered(evt);
             }
@@ -278,7 +281,7 @@ public class VentanaProducto extends javax.swing.JFrame {
 
         lbTituloP.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         lbTituloP.setText("jLabel5");
-        jpMarcoP.add(lbTituloP, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 220, 30));
+        jpMarcoP.add(lbTituloP, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 220, 30));
 
         jpFondo.add(jpMarcoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 30));
 
@@ -382,6 +385,11 @@ public class VentanaProducto extends javax.swing.JFrame {
         this.jpRegresarP.setBackground(Color.white);
         this.btRegresarP.setForeground(Colores.btTextoSalir);
     }//GEN-LAST:event_btRegresarPMouseExited
+
+    private void btRegresarPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegresarPMouseClicked
+        VentanaMenu vMenu = new VentanaMenu();
+        this.cerrarVentana();
+    }//GEN-LAST:event_btRegresarPMouseClicked
 
     // ****************** METODOS ****************** 
     private void restablecerTextos() {
