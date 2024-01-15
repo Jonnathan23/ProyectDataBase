@@ -4,11 +4,13 @@
  */
 package VentanasRegistro;
 
+import Controladores.ControladorProducto;
 import static VentanasRegistro.VentanaIngreso.titulo;
 import static VentanasRegistro.Colores.btNaranja;
 import static VentanasRegistro.Colores.btNaranjaOscuro;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +23,8 @@ public class VentanaProducto extends javax.swing.JFrame {
     
     private Color colorTexto = new Color(0, 0, 0);
     private Color colorTextoOriginal = new Color(229, 178, 126);
+    
+    private ControladorProducto cProducto = new ControladorProducto();
 
     /**
      * Creates new form VentanaCategoria
@@ -167,6 +171,11 @@ public class VentanaProducto extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btAgregarUsuarioMouseExited(evt);
+            }
+        });
+        btAgregarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAgregarUsuarioActionPerformed(evt);
             }
         });
         jpAgregarUsuario.add(btAgregarUsuario, java.awt.BorderLayout.CENTER);
@@ -390,6 +399,50 @@ public class VentanaProducto extends javax.swing.JFrame {
         VentanaMenu vMenu = new VentanaMenu();
         this.cerrarVentana();
     }//GEN-LAST:event_btRegresarPMouseClicked
+
+    private void btAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarUsuarioActionPerformed
+        this.cProducto.setCodigoBarras(this.txtCodigoBarras.getText());
+        this.cProducto.setNombre(this.txtNombrePro.getText());
+        this.cProducto.setPrecio(String.valueOf(this.txtPrecio.getText()));
+        this.cProducto.setStock(String.valueOf(this.txtStock.getText()));
+        
+        if(cProducto.controladorCodigo()){
+            JOptionPane.showMessageDialog(null,"No ingreso el código de barras!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtCodigoBarras.setText("");
+            this.restablecerTextos();
+            return;
+        }          
+        
+        if(cProducto.controladorNombre()){
+            JOptionPane.showMessageDialog(null,"No ingreso el nombre del producto!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtNombrePro.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+        if(cProducto.controladorPrecio()){
+            JOptionPane.showMessageDialog(null,"No ingreso el nombre del producto!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtPrecio.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+        if(cProducto.controladorStock()){
+            JOptionPane.showMessageDialog(null,"No ingreso el nombre del producto!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtStock.setText("");
+            this.restablecerTextos();
+            return;
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btAgregarUsuarioActionPerformed
 
     // ****************** METODOS ****************** 
     private void restablecerTextos() {
