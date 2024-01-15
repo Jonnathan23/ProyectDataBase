@@ -5,8 +5,8 @@
 package VentanasRegistro;
 
 import static VentanasRegistro.VentanaIngreso.titulo;
-import static VentanasRegistro.VentanaIngreso.btNaranja;
-import static VentanasRegistro.VentanaIngreso.btNaranjaOscuro;
+import static VentanasRegistro.Colores.btNaranja;
+import static VentanasRegistro.Colores.btNaranjaOscuro;
 
 import java.awt.Color;
 
@@ -16,6 +16,9 @@ import java.awt.Color;
  */
 public class VentanaProducto extends javax.swing.JFrame {
 
+    private int xMouse;
+    private int yMouse;
+    
     private Color colorTexto = new Color(0, 0, 0);
     private Color colorTextoOriginal = new Color(229, 178, 126);
 
@@ -26,7 +29,10 @@ public class VentanaProducto extends javax.swing.JFrame {
         initComponents();        
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        this.setTitle(titulo);
+        this.btRegresarP.setForeground(Colores.btTextoSalir);
+        this.btSalirP.setForeground(Colores.btTextoSalir);
+        this.lbTituloP.setText(titulo);
+        this.lbTituloP.setForeground(Colores.btTextoSalir);
     }
 
     /**
@@ -38,6 +44,7 @@ public class VentanaProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jpFondo = new javax.swing.JPanel();
         jpContenedor = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -57,11 +64,27 @@ public class VentanaProducto extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         cbCategoria = new javax.swing.JComboBox<>();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        miVolver = new javax.swing.JMenuItem();
+        jpMarcoP = new javax.swing.JPanel();
+        jpSalirP = new javax.swing.JPanel();
+        btSalirP = new javax.swing.JButton();
+        jpRegresarP = new javax.swing.JPanel();
+        btRegresarP = new javax.swing.JButton();
+        lbTituloP = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jpFondo.setBackground(new java.awt.Color(62, 169, 204));
         jpFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -130,7 +153,7 @@ public class VentanaProducto extends javax.swing.JFrame {
         jSeparator3.setForeground(new java.awt.Color(169, 98, 26));
         jpContenedor.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 70, 10));
 
-        jpAgregarUsuario.setBackground(new java.awt.Color(193, 111, 29));
+        jpAgregarUsuario.setBackground(new java.awt.Color(214, 122, 30));
         jpAgregarUsuario.setLayout(new java.awt.BorderLayout());
 
         btAgregarUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,41 +218,83 @@ public class VentanaProducto extends javax.swing.JFrame {
         cbCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jpContenedor.add(cbCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 120, -1));
 
-        jpFondo.add(jpContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 370, 450));
+        jpFondo.add(jpContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 370, 450));
 
-        jMenu4.setText("Registrar");
-
-        miVolver.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
-        miVolver.setText("Volver");
-        miVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miVolverActionPerformed(evt);
+        jpMarcoP.setBackground(new java.awt.Color(255, 255, 255));
+        jpMarcoP.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpMarcoPMouseDragged(evt);
             }
         });
-        jMenu4.add(miVolver);
+        jpMarcoP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpMarcoPMousePressed(evt);
+            }
+        });
+        jpMarcoP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jMenuBar1.add(jMenu4);
+        jpSalirP.setBackground(new java.awt.Color(255, 255, 255));
+        jpSalirP.setLayout(new java.awt.BorderLayout());
 
-        setJMenuBar(jMenuBar1);
+        btSalirP.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btSalirP.setText("X");
+        btSalirP.setBorder(null);
+        btSalirP.setContentAreaFilled(false);
+        btSalirP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSalirP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btSalirPMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btSalirPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btSalirPMouseExited(evt);
+            }
+        });
+        jpSalirP.add(btSalirP, java.awt.BorderLayout.CENTER);
+
+        jpMarcoP.add(jpSalirP, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 50, 30));
+
+        jpRegresarP.setBackground(new java.awt.Color(255, 255, 255));
+        jpRegresarP.setLayout(new java.awt.BorderLayout());
+
+        btRegresarP.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btRegresarP.setText("<");
+        btRegresarP.setBorder(null);
+        btRegresarP.setContentAreaFilled(false);
+        btRegresarP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btRegresarP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btRegresarPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btRegresarPMouseExited(evt);
+            }
+        });
+        jpRegresarP.add(btRegresarP, java.awt.BorderLayout.CENTER);
+
+        jpMarcoP.add(jpRegresarP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 30));
+
+        lbTituloP.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        lbTituloP.setText("jLabel5");
+        jpMarcoP.add(lbTituloP, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 220, 30));
+
+        jpFondo.add(jpMarcoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+            .addComponent(jpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void miVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVolverActionPerformed
-        VentanaMenu ventanaMenu = new VentanaMenu();
-        this.cerrarVentana();
-    }//GEN-LAST:event_miVolverActionPerformed
 
     private void txtCodigoBarrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoBarrasActionPerformed
         // TODO add your handling code here:
@@ -275,12 +340,48 @@ public class VentanaProducto extends javax.swing.JFrame {
 
     // *************** ENTRERED *************
     private void btAgregarUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarUsuarioMouseEntered
-        this.jpAgregarUsuario.setBackground(btNaranjaOscuro);        
+        this.jpAgregarUsuario.setBackground(Colores.btNaranjaOscuro);        
     }//GEN-LAST:event_btAgregarUsuarioMouseEntered
 
     private void btAgregarUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarUsuarioMouseExited
-        this.jpAgregarUsuario.setBackground(btNaranja);        
+        this.jpAgregarUsuario.setBackground(Colores.btNaranja);        
     }//GEN-LAST:event_btAgregarUsuarioMouseExited
+
+    private void btSalirPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirPMouseEntered
+        this.jpSalirP.setBackground(Colores.btRojo);
+        this.btSalirP.setForeground(Color.white);
+    }//GEN-LAST:event_btSalirPMouseEntered
+
+    private void btSalirPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirPMouseExited
+        this.jpSalirP.setBackground(Color.white);
+        this.btSalirP.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btSalirPMouseExited
+
+    private void jpMarcoPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcoPMousePressed
+        this.xMouse = evt.getX();
+        this.yMouse = evt.getY();
+    }//GEN-LAST:event_jpMarcoPMousePressed
+
+    private void jpMarcoPMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcoPMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+        
+    }//GEN-LAST:event_jpMarcoPMouseDragged
+
+    private void btSalirPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirPMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_btSalirPMouseClicked
+
+    private void btRegresarPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegresarPMouseEntered
+        this.jpRegresarP.setBackground(Colores.btNaranjaClaro);
+        this.btRegresarP.setForeground(Color.white);
+    }//GEN-LAST:event_btRegresarPMouseEntered
+
+    private void btRegresarPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegresarPMouseExited
+        this.jpRegresarP.setBackground(Color.white);
+        this.btRegresarP.setForeground(Colores.btTextoSalir);
+    }//GEN-LAST:event_btRegresarPMouseExited
 
     // ****************** METODOS ****************** 
     private void restablecerTextos() {
@@ -350,6 +451,8 @@ public class VentanaProducto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregarUsuario;
+    private javax.swing.JButton btRegresarP;
+    private javax.swing.JButton btSalirP;
     private javax.swing.JComboBox<String> cbCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -357,8 +460,7 @@ public class VentanaProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -366,7 +468,10 @@ public class VentanaProducto extends javax.swing.JFrame {
     private javax.swing.JPanel jpAgregarUsuario;
     private javax.swing.JPanel jpContenedor;
     private javax.swing.JPanel jpFondo;
-    private javax.swing.JMenuItem miVolver;
+    private javax.swing.JPanel jpMarcoP;
+    private javax.swing.JPanel jpRegresarP;
+    private javax.swing.JPanel jpSalirP;
+    private javax.swing.JLabel lbTituloP;
     private javax.swing.JTextField txtCodigoBarras;
     private javax.swing.JTextField txtNombrePro;
     private javax.swing.JTextField txtPrecio;
