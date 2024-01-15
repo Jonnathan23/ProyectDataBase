@@ -27,7 +27,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);        
         this.lbTituloC.setText(titulo);
-        this.lbTituloC.setForeground(Colores.btTextoSalir);
+        this.pintar();
        
     }
 
@@ -229,6 +229,9 @@ public class VentanaCliente extends javax.swing.JFrame {
         btSalirC.setText("X");
         btSalirC.setContentAreaFilled(false);
         btSalirC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btSalirCMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btSalirCMouseEntered(evt);
             }
@@ -253,6 +256,11 @@ public class VentanaCliente extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btRegresarCMouseExited(evt);
+            }
+        });
+        btRegresarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRegresarCActionPerformed(evt);
             }
         });
         jpRegresarC.add(btRegresarC, java.awt.BorderLayout.CENTER);
@@ -368,6 +376,15 @@ public class VentanaCliente extends javax.swing.JFrame {
         this.jpRegresarC.setBackground(Color.white);
         this.btRegresarC.setForeground(Colores.btTextoSalir);
     }//GEN-LAST:event_btRegresarCMouseExited
+
+    private void btSalirCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirCMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_btSalirCMouseClicked
+
+    private void btRegresarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegresarCActionPerformed
+        VentanaMenu vMenu = new VentanaMenu();
+        this.cerrarVentana();
+    }//GEN-LAST:event_btRegresarCActionPerformed
 
     private void restablecerTextos() {
         if (this.txtCedula.getText().isEmpty()) {
