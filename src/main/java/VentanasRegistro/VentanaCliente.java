@@ -16,6 +16,7 @@ import java.awt.Color;
 public class VentanaCliente extends javax.swing.JFrame {
 
     private Color colorTextoOriginal = new Color(60, 63, 65);
+    private int xMouse, yMouse;
 
     /**
      * Creates new form VentanaCategoria
@@ -24,8 +25,10 @@ public class VentanaCliente extends javax.swing.JFrame {
         initComponents();
 
         this.setVisible(true);
-        this.setLocationRelativeTo(null);
-        this.setTitle(titulo);
+        this.setLocationRelativeTo(null);        
+        this.lbTituloC.setText(titulo);
+        this.lbTituloC.setForeground(Colores.btTextoSalir);
+       
     }
 
     /**
@@ -55,11 +58,16 @@ public class VentanaCliente extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         jpAgregarCliente = new javax.swing.JPanel();
         btAgregarCliente = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        miVolver = new javax.swing.JMenuItem();
+        jpMarcoClie = new javax.swing.JPanel();
+        jpSalirC = new javax.swing.JPanel();
+        btSalirC = new javax.swing.JButton();
+        jpRegresarC = new javax.swing.JPanel();
+        btRegresarC = new javax.swing.JButton();
+        lbTituloC = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(62, 169, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,41 +207,76 @@ public class VentanaCliente extends javax.swing.JFrame {
 
         jPanel2.add(jpAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 165, 35));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 440, 520));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 440, 520));
 
-        jMenu4.setText("Registrar");
-
-        miVolver.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
-        miVolver.setText("Volver");
-        miVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miVolverActionPerformed(evt);
+        jpMarcoClie.setBackground(new java.awt.Color(255, 255, 255));
+        jpMarcoClie.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpMarcoClieMouseDragged(evt);
             }
         });
-        jMenu4.add(miVolver);
+        jpMarcoClie.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpMarcoClieMousePressed(evt);
+            }
+        });
+        jpMarcoClie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jMenuBar1.add(jMenu4);
+        jpSalirC.setBackground(new java.awt.Color(255, 255, 255));
+        jpSalirC.setLayout(new java.awt.BorderLayout());
 
-        setJMenuBar(jMenuBar1);
+        btSalirC.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btSalirC.setText("X");
+        btSalirC.setContentAreaFilled(false);
+        btSalirC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btSalirCMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btSalirCMouseExited(evt);
+            }
+        });
+        jpSalirC.add(btSalirC, java.awt.BorderLayout.CENTER);
+
+        jpMarcoClie.add(jpSalirC, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 50, 30));
+
+        jpRegresarC.setBackground(new java.awt.Color(255, 255, 255));
+        jpRegresarC.setLayout(new java.awt.BorderLayout());
+
+        btRegresarC.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btRegresarC.setText("<");
+        btRegresarC.setContentAreaFilled(false);
+        btRegresarC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btRegresarC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btRegresarCMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btRegresarCMouseExited(evt);
+            }
+        });
+        jpRegresarC.add(btRegresarC, java.awt.BorderLayout.CENTER);
+
+        jpMarcoClie.add(jpRegresarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 30));
+
+        lbTituloC.setText("jLabel8");
+        jpMarcoClie.add(lbTituloC, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 200, 30));
+
+        jPanel1.add(jpMarcoClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void miVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVolverActionPerformed
-        VentanaMenu ventanaMenu = new VentanaMenu();
-        this.cerrarVentana();
-    }//GEN-LAST:event_miVolverActionPerformed
 
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
@@ -295,6 +338,37 @@ public class VentanaCliente extends javax.swing.JFrame {
         this.jpAgregarCliente.setBackground(Colores.btCeleste);
     }//GEN-LAST:event_btAgregarClienteMouseExited
 
+    private void btSalirCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirCMouseEntered
+        this.jpSalirC.setBackground(Colores.btRojo);
+        this.btSalirC.setForeground(Color.white);
+    }//GEN-LAST:event_btSalirCMouseEntered
+
+    private void jpMarcoClieMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcoClieMousePressed
+        this.xMouse = evt.getX();
+        this.yMouse = evt.getY();
+    }//GEN-LAST:event_jpMarcoClieMousePressed
+
+    private void jpMarcoClieMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcoClieMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jpMarcoClieMouseDragged
+
+    private void btSalirCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirCMouseExited
+        this.jpSalirC.setBackground(Color.white);
+        this.btSalirC.setForeground(Colores.btTextoSalir);
+    }//GEN-LAST:event_btSalirCMouseExited
+
+    private void btRegresarCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegresarCMouseEntered
+        this.jpRegresarC.setBackground(btCeleste);
+        this.btRegresarC.setForeground(Color.white);
+    }//GEN-LAST:event_btRegresarCMouseEntered
+
+    private void btRegresarCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegresarCMouseExited
+        this.jpRegresarC.setBackground(Color.white);
+        this.btRegresarC.setForeground(Colores.btTextoSalir);
+    }//GEN-LAST:event_btRegresarCMouseExited
+
     private void restablecerTextos() {
         if (this.txtCedula.getText().isEmpty()) {
             this.txtCedula.setText("Ingresar el numero de cedula");
@@ -323,6 +397,12 @@ public class VentanaCliente extends javax.swing.JFrame {
 
     }
 
+    private void pintar(){
+        this.lbTituloC.setForeground(Colores.btTextoSalir);
+        this.btSalirC.setForeground(Colores.btTextoSalir);
+        this.btRegresarC.setForeground(Colores.btTextoSalir);
+    }
+    
     public void cerrarVentana() {
         this.dispose();
     }
@@ -365,6 +445,8 @@ public class VentanaCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregarCliente;
+    private javax.swing.JButton btRegresarC;
+    private javax.swing.JButton btSalirC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -372,13 +454,14 @@ public class VentanaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpAgregarCliente;
-    private javax.swing.JMenuItem miVolver;
+    private javax.swing.JPanel jpMarcoClie;
+    private javax.swing.JPanel jpRegresarC;
+    private javax.swing.JPanel jpSalirC;
+    private javax.swing.JLabel lbTituloC;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextArea txtDireccion;
