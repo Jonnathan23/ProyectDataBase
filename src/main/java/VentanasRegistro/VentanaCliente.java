@@ -33,7 +33,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         this.pintar();
 
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -236,6 +236,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         btSalirC.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         btSalirC.setText("X");
         btSalirC.setContentAreaFilled(false);
+        btSalirC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btSalirC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btSalirCMouseClicked(evt);
@@ -245,6 +246,11 @@ public class VentanaCliente extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btSalirCMouseExited(evt);
+            }
+        });
+        btSalirC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalirCActionPerformed(evt);
             }
         });
         jpSalirC.add(btSalirC, java.awt.BorderLayout.CENTER);
@@ -276,9 +282,9 @@ public class VentanaCliente extends javax.swing.JFrame {
         jpMarcoClie.add(jpRegresarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 30));
 
         lbTituloC.setText("jLabel8");
-        jpMarcoClie.add(lbTituloC, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 200, 30));
+        jpMarcoClie.add(lbTituloC, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 200, 30));
 
-        jPanel1.add(jpMarcoClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 30));
+        jPanel1.add(jpMarcoClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -451,6 +457,10 @@ public class VentanaCliente extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btAgregarClienteActionPerformed
+
+    private void btSalirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btSalirCActionPerformed
 
     private void restablecerTextos() {
         if (this.txtCedula.getText().isEmpty()) {
