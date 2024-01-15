@@ -8,6 +8,7 @@ import Controladores.ControladorCategoria;
 import static VentanasRegistro.VentanaIngreso.titulo;
 import static VentanasRegistro.Colores.btCeleste;
 import static VentanasRegistro.Colores.btCelesteOscuro;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,14 +18,14 @@ import javax.swing.JOptionPane;
 public class VentanaCategoria extends javax.swing.JFrame{
 
     private ControladorCategoria cCategoria = new ControladorCategoria();
-    /**
-     * Creates new form VentanaCategoria
-     */
+    private int xMouse, yMouse;    
+    
     public VentanaCategoria() {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        this.setTitle(titulo);
+        this.lbTituloCat.setText(titulo);
+        this.pintar();
     }
 
     /**
@@ -43,11 +44,16 @@ public class VentanaCategoria extends javax.swing.JFrame{
         jpAgregarUsuario = new javax.swing.JPanel();
         btAgregarUusario = new javax.swing.JButton();
         txtNombreCat = new javax.swing.JTextField();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        miVolver = new javax.swing.JMenuItem();
+        jpMarcoCat = new javax.swing.JPanel();
+        jpSalirCat = new javax.swing.JPanel();
+        btSalirCat = new javax.swing.JButton();
+        jpRegresarCat = new javax.swing.JPanel();
+        btRegresarCat = new javax.swing.JButton();
+        lbTituloCat = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpFondo.setBackground(new java.awt.Color(62, 169, 204));
         jpFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -104,41 +110,92 @@ public class VentanaCategoria extends javax.swing.JFrame{
         });
         jpContenedor.add(txtNombreCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 280, 30));
 
-        jpFondo.add(jpContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 370, 270));
+        jpFondo.add(jpContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 370, 270));
 
-        jMenu4.setText("Registrar");
-
-        miVolver.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
-        miVolver.setText("Volver");
-        miVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miVolverActionPerformed(evt);
+        jpMarcoCat.setBackground(new java.awt.Color(255, 255, 255));
+        jpMarcoCat.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpMarcoCatMouseDragged(evt);
             }
         });
-        jMenu4.add(miVolver);
+        jpMarcoCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpMarcoCatMousePressed(evt);
+            }
+        });
 
-        jMenuBar1.add(jMenu4);
+        jpSalirCat.setBackground(new java.awt.Color(255, 255, 255));
+        jpSalirCat.setLayout(new java.awt.BorderLayout());
 
-        setJMenuBar(jMenuBar1);
+        btSalirCat.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btSalirCat.setText("X");
+        btSalirCat.setContentAreaFilled(false);
+        btSalirCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btSalirCatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btSalirCatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btSalirCatMouseExited(evt);
+            }
+        });
+        btSalirCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalirCatActionPerformed(evt);
+            }
+        });
+        jpSalirCat.add(btSalirCat, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jpRegresarCat.setBackground(new java.awt.Color(255, 255, 255));
+        jpRegresarCat.setLayout(new java.awt.BorderLayout());
+
+        btRegresarCat.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btRegresarCat.setText("<");
+        btRegresarCat.setContentAreaFilled(false);
+        btRegresarCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btRegresarCatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btRegresarCatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btRegresarCatMouseExited(evt);
+            }
+        });
+        jpRegresarCat.add(btRegresarCat, java.awt.BorderLayout.CENTER);
+
+        lbTituloCat.setText("jLabel2");
+
+        javax.swing.GroupLayout jpMarcoCatLayout = new javax.swing.GroupLayout(jpMarcoCat);
+        jpMarcoCat.setLayout(jpMarcoCatLayout);
+        jpMarcoCatLayout.setHorizontalGroup(
+            jpMarcoCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMarcoCatLayout.createSequentialGroup()
+                .addComponent(jpRegresarCat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(lbTituloCat, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 406, Short.MAX_VALUE)
+                .addComponent(jpSalirCat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jpMarcoCatLayout.setVerticalGroup(
+            jpMarcoCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpMarcoCatLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jpMarcoCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpSalirCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpRegresarCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbTituloCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
+
+        jpFondo.add(jpMarcoCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 30));
+
+        getContentPane().add(jpFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 728, 405));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void miVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVolverActionPerformed
-        VentanaMenu ventanaMenu = new VentanaMenu();
-        this.cerrarVentana();
-    }//GEN-LAST:event_miVolverActionPerformed
 
     private void txtNombreCatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreCatMousePressed
         this.txtNombreCat.setText("");
@@ -165,6 +222,57 @@ public class VentanaCategoria extends javax.swing.JFrame{
         this.txtNombreCat.setText("Ingrese el nombre de la categoria");        
     }//GEN-LAST:event_btAgregarUusarioActionPerformed
 
+    private void btSalirCatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirCatMouseEntered
+        this.jpSalirCat.setBackground(Colores.btRojo);
+        this.btSalirCat.setForeground(Color.white);
+    }//GEN-LAST:event_btSalirCatMouseEntered
+
+    private void btSalirCatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirCatMouseExited
+        this.jpSalirCat.setBackground(Color.white);
+        this.btSalirCat.setForeground(Colores.btTextoSalir);        
+    }//GEN-LAST:event_btSalirCatMouseExited
+
+    private void btSalirCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirCatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btSalirCatActionPerformed
+
+    private void btRegresarCatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegresarCatMouseEntered
+        this.jpRegresarCat.setBackground(btCeleste);
+        this.btRegresarCat.setForeground(Color.white);
+    }//GEN-LAST:event_btRegresarCatMouseEntered
+
+    private void btSalirCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSalirCatMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_btSalirCatMouseClicked
+
+    private void btRegresarCatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegresarCatMouseExited
+        this.jpRegresarCat.setBackground(Color.white);
+        this.btRegresarCat.setForeground(Colores.btTextoSalir);
+    }//GEN-LAST:event_btRegresarCatMouseExited
+
+    private void jpMarcoCatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcoCatMousePressed
+        this.xMouse = evt.getX();
+        this.yMouse = evt.getY();
+    }//GEN-LAST:event_jpMarcoCatMousePressed
+
+    private void jpMarcoCatMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcoCatMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jpMarcoCatMouseDragged
+
+    private void btRegresarCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegresarCatMouseClicked
+        VentanaMenu vMenu = new VentanaMenu();
+        this.cerrarVentana();
+    }//GEN-LAST:event_btRegresarCatMouseClicked
+
+    private void pintar(){
+        this.btSalirCat.setForeground(Colores.btTextoSalir);
+        this.btRegresarCat.setForeground(Colores.btTextoSalir);
+        this.lbTituloCat.setForeground(Colores.btTextoSalir);
+    }
+    
     public void cerrarVentana(){
         this.dispose();
     }
@@ -212,14 +320,17 @@ public class VentanaCategoria extends javax.swing.JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregarUusario;
+    private javax.swing.JButton btRegresarCat;
+    private javax.swing.JButton btSalirCat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jpAgregarUsuario;
     private javax.swing.JPanel jpContenedor;
     private javax.swing.JPanel jpFondo;
-    private javax.swing.JMenuItem miVolver;
+    private javax.swing.JPanel jpMarcoCat;
+    private javax.swing.JPanel jpRegresarCat;
+    private javax.swing.JPanel jpSalirCat;
+    private javax.swing.JLabel lbTituloCat;
     private javax.swing.JTextField txtNombreCat;
     // End of variables declaration//GEN-END:variables
 }
